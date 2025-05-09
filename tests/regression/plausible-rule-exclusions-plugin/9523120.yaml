@@ -1,0 +1,103 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Plausible Rule Exclusions Plugin: Viewing analytics data"
+  enabled: true
+  name: 9523120.yaml
+tests:
+  - test_title: 9523120-1
+    desc: Filtering by OS
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /api/stats/example.com/top-stats/?period=30d&date=2025-02-02&filters=%5B%5B%22is%22%2C%22visit%3Aos%22%2C%5B%22Windows%22%5D%5D%2C%5B%22is%22%2C%22visit%3Aos_version%22%2C%5B%2210%22%5D%5D%5D&with_imported=true&comparison=previous_period&compare_from=undefined&compare_to=undefined&match_day_of_week=true
+          output:
+            no_log_contains: |-
+              id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
+  - test_title: 9523120-2
+    desc: Filtering by OS, refreshing page after applying a filter
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /example.com?filters=((is,os,(Windows)),(is,os_version,(%2710%27)))
+          output:
+            no_log_contains: |-
+              id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
+  - test_title: 9523120-3
+    desc: Filtering by browser then refreshing page
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /example.com?filters=((is,browser,(Chrome)),(is,browser_version,(%27132.0%27)))
+          output:
+            no_log_contains: |-
+              id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
+  - test_title: 9523120-4
+    desc: Viewing details on browsers
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /api/stats/example.com/browsers/?period=30d&date=2025-02-11&filters=%5B%5D&with_imported=true&detailed=true&order_by=%5B%5B%22visitors%22%2C%22desc%22%5D%5D&limit=100&page=1
+          output:
+            no_log_contains: |-
+              id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
+  - test_title: 9523120-5
+    desc: Viewing details on referred sites
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /api/stats/example.com/sources/?period=30d&date=2025-02-11&filters=%5B%5D&with_imported=true&detailed=true&order_by=%5B%5B%22visitors%22%2C%22desc%22%5D%5D&limit=100&page=1
+          output:
+            no_log_contains: |-
+              id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
+  - test_title: 9523120-6
+    desc: Viewing details on exit pages
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /api/stats/example.com/exit-pages/?period=all&date=2025-02-11&filters=%5B%5D&with_imported=true&detailed=true&order_by=%5B%5B%22visitors%22%2C%22desc%22%5D%5D&limit=100&page=1
+          output:
+            no_log_contains: |-
+              id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"

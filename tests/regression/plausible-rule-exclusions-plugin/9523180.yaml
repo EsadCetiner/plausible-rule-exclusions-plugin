@@ -1,0 +1,64 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Plausible Rule Exclusions Plugin: Plugins API"
+  enabled: true
+  name: 9523180.yaml
+tests:
+  - test_title: 9523180-1
+    desc: Creating/editing custom goals
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/json
+            port: 80
+            method: PUT
+            uri: /api/plugins/v1/goals
+            data: |-
+              {"goals":[{"goal":{"event_name":"404"},"goal_type":"Goal.CustomEvent"},{"goal":{"event_name":"Outbound Link: Click"},"goal_type":"Goal.CustomEvent"}]}
+          output:
+            no_log_contains: |-
+              id "911100"|id "920273"|id "921180"
+  - test_title: 9523180-2
+    desc: Creatiing/editing custom properties
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/json
+            port: 80
+            method: PUT
+            uri: /api/plugins/v1/custom_props
+            data: |-
+              {"custom_props":[{"custom_prop":{"key":"search_query"}},{"custom_prop":{"key":"result_count"}}]}
+          output:
+            no_log_contains: |-
+              id "911100"|id "920273"|id "921180"
+  - test_title: 9523180-3
+    desc: Creating shared links
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/json
+            port: 80
+            method: PUT
+            uri: /api/plugins/v1/shared_links
+            data: |-
+              {"shared_link":{"name":"WordPress - Shared Dashboard","password_protected":false}}
+          output:
+            no_log_contains: |-
+              id "911100"|id "920273"|id "921180"

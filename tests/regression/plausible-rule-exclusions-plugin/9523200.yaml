@@ -1,0 +1,61 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Plausible Rule Exclusions Plugin: Client sending analytics"
+  enabled: true
+  name: 9523200.yaml
+tests:
+  - test_title: 9523200-1
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: text/plain
+            port: 80
+            method: POST
+            uri: /api/event
+            data: |-
+              {"n":"pageview","u":"https://example.com/","d":"example.com","r":null,"h":1}
+          output:
+            no_log_contains: |-
+              id "920230"|id "931130"|id "942430"|id "942431"|id "942432"
+  - test_title: 9523200-2
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: text/plain
+            port: 80
+            method: POST
+            uri: /api/event
+            data: |-
+              {"n":"pageview","u":"https://example.com/","d":"example.com","r":"https://duckduckgo.com/","h":1}
+          output:
+            no_log_contains: |-
+              id "920230"|id "931130"|id "942430"|id "942431"|id "942432"
+  - test_title: 9523200-3
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: text/plain
+            port: 80
+            method: POST
+            uri: /api/event
+            data: |-
+              {"n":"Outbound Link: Click","u":"https://example.com/","d":"example.com","r":null,"p":{"url":"https://google.com"},"h":1}
+          output:
+            no_log_contains: |-
+              id "920230"|id "920273"|id "920420"|id "931130"|id "942430"|id "942431"|id "942432"

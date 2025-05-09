@@ -1,0 +1,40 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Plausible Rule Exclusions Plugin"
+  enabled: true
+  name: 9523100.yaml
+tests:
+  - test_title: 9523100-1
+    desc: False positive with cookie
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Cookie: _plausible_key=some.thing--random-cookie; _plausible_prod=some.thing--random-cookie
+            port: 80
+            method: GET
+            uri: /get
+          output:
+            no_log_contains: |-
+              id "942340"|id "942440"|id "942450"
+  - test_title: 9523100-2
+    desc: CSRF token false positive
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /live/websocket?_csrf_token=BhxpYhciC2QTXx5yfHsBUiFLcx1VCRw06--6tin-UhxBDCiaGxKgx_Nc&_mounts=0&_live_referer=undefined&vsn=2.0.0
+          output:
+            no_log_contains: |-
+              id "942340"|id "942440"|id "942450"
