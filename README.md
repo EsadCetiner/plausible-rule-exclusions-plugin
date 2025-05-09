@@ -1,11 +1,10 @@
 ![Integration tests](https://github.com/EsadCetiner/plausible-rule-exclusions-plugin/actions/workflows/integration.yml/badge.svg)
 
-# Warning⚠️: This plugin is still under development!
-
-This plugin has not yet finished testing, there may still be false positives and other bugs.
-
 # Plausible-rule-exclusions-plugin
 This plugin contains rule exclusions for [Plausible](https://plausible.io/) a self hostable, lightweight, and privacy focused analytics server. These rule exclusions are designed to resolve false positives and allow for easier intergration with OWASP CRS.
+
+> [!WARNING]  
+> This plugin is still under development! There may be some bugs for false positives that haven't yet been resolved.
 
 ## Requirements
 - CRS Version 4.0 or newer
