@@ -6,6 +6,7 @@ meta:
   name: 9523140.yaml
 tests:
   - test_title: 9523140-1
+    desc: Logging into Plausible
     stages:
       - stage:
           input:
@@ -22,4 +23,23 @@ tests:
               _csrf_token=random&email=test%40example.com&password=%3Cscript%3E
           output:
             no_log_contains: |-
-              id "920273"|id "941100"
+              id "920273"|id "921220"|id "941100"|id "942432"
+  - test_title: 9523140-2
+    desc: A newly invited user creating their account
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/x-www-form-urlencoded
+            port: 80
+            method: POST
+            uri: /login
+            data: |-
+              _csrf_token=random&user%5Bregister_action%5D=register_from_invitation_form&user%5Bemail%5D=use%40example.com&user%5Bname%5D=John+Doe&user%5Bpassword%5D=%3Cscript%3Eal3RT&user%5Bpassword_confirmation%5D=%3Cscript%3Eal3RT
+          output:
+            no_log_contains: |-
+              id "920273"|id "921220"|id "941100"|id "942432"

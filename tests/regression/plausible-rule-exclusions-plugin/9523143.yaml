@@ -1,0 +1,25 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Plausible Rule Exclusions Plugin: Entering password for shared site"
+  enabled: true
+  name: 9523143.yaml
+tests:
+  - test_title: 9523143-1
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Plausible rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/x-www-form-urlencoded
+            port: 80
+            method: POST
+            uri: /share/OCQWL39vVxEkUlamcL_KT/authenticate
+            data: |-
+              _csrf_token=random&password=%3Cscript%3E
+          output:
+            no_log_contains: |-
+              id "920273"|id "941100"
