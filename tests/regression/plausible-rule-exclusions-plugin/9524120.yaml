@@ -3,9 +3,9 @@ meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Viewing analytics data"
   enabled: true
-  name: 9523120.yaml
+  name: 9524120.yaml
 tests:
-  - test_title: 9523120-1
+  - test_title: 9524120-1
     desc: Filtering by OS
     stages:
       - stage:
@@ -21,7 +21,7 @@ tests:
           output:
             no_log_contains: |-
               id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
-  - test_title: 9523120-2
+  - test_title: 9524120-2
     desc: Filtering by OS, refreshing page after applying a filter
     stages:
       - stage:
@@ -37,7 +37,7 @@ tests:
           output:
             no_log_contains: |-
               id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
-  - test_title: 9523120-3
+  - test_title: 9524120-3
     desc: Filtering by browser then refreshing page
     stages:
       - stage:
@@ -53,7 +53,7 @@ tests:
           output:
             no_log_contains: |-
               id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
-  - test_title: 9523120-4
+  - test_title: 9524120-4
     desc: Viewing details on browsers
     stages:
       - stage:
@@ -69,7 +69,7 @@ tests:
           output:
             no_log_contains: |-
               id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
-  - test_title: 9523120-5
+  - test_title: 9524120-5
     desc: Viewing details on referred sites
     stages:
       - stage:
@@ -85,7 +85,7 @@ tests:
           output:
             no_log_contains: |-
               id "920273"|id "932240"|id "932260"|id "933151"|id "942190"|id "942200"|id "942260"|id "942330"|id "942340"|id "942370"|id "942430"|id "942431"|id "942432"|id "942440"|id "942460"|id "942490"|id "942511"|id "942520"
-  - test_title: 9523120-6
+  - test_title: 9524120-6
     desc: Viewing details on exit pages
     stages:
       - stage:

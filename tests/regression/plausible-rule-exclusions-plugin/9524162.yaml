@@ -3,9 +3,9 @@ meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Creating a shared link for site analytics"
   enabled: true
-  name: 9523162.yaml
+  name: 9524162.yaml
 tests:
-  - test_title: 9523162-1
+  - test_title: 9524162-1
     stages:
       - stage:
           input:

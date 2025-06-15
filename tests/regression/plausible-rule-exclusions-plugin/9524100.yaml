@@ -3,9 +3,9 @@ meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin"
   enabled: true
-  name: 9523100.yaml
+  name: 9524100.yaml
 tests:
-  - test_title: 9523100-1
+  - test_title: 9524100-1
     desc: False positive with cookie
     stages:
       - stage:
@@ -22,7 +22,7 @@ tests:
           output:
             no_log_contains: |-
               id "942340"|id "942440"|id "942450"
-  - test_title: 9523100-2
+  - test_title: 9524100-2
     desc: CSRF token false positive
     stages:
       - stage:

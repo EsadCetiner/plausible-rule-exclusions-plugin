@@ -1,12 +1,12 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Plausible Rule Exclusions Plugin: Logging into plausible"
+  description: "Plausible Rule Exclusions Plugin: Adjusting settings"
   enabled: true
-  name: 9523140.yaml
+  name: 9524160.yaml
 tests:
-  - test_title: 9523140-1
-    desc: Logging into Plausible
+  - test_title: 9524160-1
+    desc: Enabling/disabling Goals in dashboard
     stages:
       - stage:
           input:
@@ -18,14 +18,14 @@ tests:
               Content-Type: application/x-www-form-urlencoded
             port: 80
             method: POST
-            uri: /login
+            uri: /example.com/settings/features/visibility/conversions_enabled?r=%2Fexample.com%2Fsettings%2Fgoals&set=false
             data: |-
-              _csrf_token=random&email=test%40example.com&password=%3Cscript%3E
+              _method=put&_csrf_token=something-ran-dom
           output:
             no_log_contains: |-
-              id "920273"|id "921220"|id "941100"|id "942432"
-  - test_title: 9523140-2
-    desc: A newly invited user creating their account
+              id "920273"|id "932250"|id "932236"
+  - test_title: 9524160-2
+    desc: Enabling/disabling Custom Properties in Dashboard
     stages:
       - stage:
           input:
@@ -37,9 +37,9 @@ tests:
               Content-Type: application/x-www-form-urlencoded
             port: 80
             method: POST
-            uri: /login
+            uri: /example.com/settings/features/visibility/props_enabled?r=%2Fexample.com%2Fsettings%2Fproperties&set=false
             data: |-
-              _csrf_token=random&user%5Bregister_action%5D=register_from_invitation_form&user%5Bemail%5D=use%40example.com&user%5Bname%5D=John+Doe&user%5Bpassword%5D=%3Cscript%3Eal3RT&user%5Bpassword_confirmation%5D=%3Cscript%3Eal3RT
+              _method=put&_csrf_token=something
           output:
             no_log_contains: |-
-              id "920273"|id "921220"|id "941100"|id "942432"
+              id "920273"|id "932250"|id "932236"

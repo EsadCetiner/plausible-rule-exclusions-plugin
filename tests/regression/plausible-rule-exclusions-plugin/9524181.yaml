@@ -3,9 +3,9 @@ meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Plugins API"
   enabled: true
-  name: 9523181.yaml
+  name: 9524181.yaml
 tests:
-  - test_title: 9523181-1
+  - test_title: 9524181-1
     desc: Deleting goals
     stages:
       - stage:

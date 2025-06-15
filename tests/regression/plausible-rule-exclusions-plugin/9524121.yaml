@@ -3,9 +3,9 @@ meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin"
   enabled: true
-  name: 9523121.yaml
+  name: 9524121.yaml
 tests:
-  - test_title: 9523121-1
+  - test_title: 9524121-1
     desc: allow .com TLD
     stages:
       - stage:
@@ -20,7 +20,7 @@ tests:
             uri: /example.com
           output:
             no_log_contains: id "920440"
-  - test_title: 9523121-2
+  - test_title: 9524121-2
     desc: allow .inc TLD
     stages:
       - stage:
@@ -35,7 +35,7 @@ tests:
             uri: /example.inc
           output:
             no_log_contains: id "920440"
-  - test_title: 9523121-3
+  - test_title: 9524121-3
     desc: allow .com TLD favicons for referred sites
     stages:
       - stage:
@@ -50,7 +50,7 @@ tests:
             uri: /favicon/sources/example.com
           output:
             no_log_contains: id "920440"
-  - test_title: 9523121-4
+  - test_title: 9524121-4
     desc: allow .inc TLD favicons for referred sites
     stages:
       - stage:
