@@ -3,9 +3,9 @@ meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Entering password for shared site"
   enabled: true
-  name: 9524143.yaml
+  name: 9525143.yaml
 tests:
-  - test_title: 9524143-1
+  - test_title: 9525143-1
     stages:
       - stage:
           input:

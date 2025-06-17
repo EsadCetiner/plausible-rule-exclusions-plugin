@@ -1,11 +1,11 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Plausible Rule Exclusions Plugin: Creating a shared link for site analytics"
+  description: "Plausible Rule Exclusions Plugin: Changing password"
   enabled: true
-  name: 9524162.yaml
+  name: 9525161.yaml
 tests:
-  - test_title: 9524162-1
+  - test_title: 9525161-1
     stages:
       - stage:
           input:
@@ -17,9 +17,9 @@ tests:
               Content-Type: application/x-www-form-urlencoded
             port: 80
             method: POST
-            uri: /sites/example.com/shared-links
+            uri: /settings/security/password
             data: |-
-              _csrf_token=random&shared_link%5Bname%5D=test&shared_link%5Bpassword%5D=%3Cscript%3E
+              _csrf_token=something-random&user%5Bold_password%5D=%3Cscript%3E&user%5Bpassword%5D=%3Cscript%3E&user%5Bpassword_confirmation%5D=%3Cscript%3E&user%5Btwo_factor_code%5D=123456
           output:
             no_log_contains: |-
               id "920273"|id "921220"|id "941100"|id "942432"

@@ -3,9 +3,9 @@ meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Client sending analytics"
   enabled: true
-  name: 9524200.yaml
+  name: 9525200.yaml
 tests:
-  - test_title: 9524200-1
+  - test_title: 9525200-1
     stages:
       - stage:
           input:
@@ -23,7 +23,7 @@ tests:
           output:
             no_log_contains: |-
               id "920230"|id "931130"|id "942430"|id "942431"|id "942432"
-  - test_title: 9524200-2
+  - test_title: 9525200-2
     stages:
       - stage:
           input:
@@ -41,7 +41,7 @@ tests:
           output:
             no_log_contains: |-
               id "920230"|id "931130"|id "942430"|id "942431"|id "942432"
-  - test_title: 9524200-3
+  - test_title: 9525200-3
     stages:
       - stage:
           input:
