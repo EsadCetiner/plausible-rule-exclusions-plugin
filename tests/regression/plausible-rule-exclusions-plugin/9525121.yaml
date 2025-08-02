@@ -2,66 +2,65 @@
 meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin"
-  enabled: true
-  name: 9525121.yaml
+test_id: 9525121
 tests:
-  - test_title: 9525121-1
+  - test_id: 1
     desc: allow .com TLD
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Plausible rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: GET
-            uri: /example.com
-          output:
-            no_log_contains: id "920440"
-  - test_title: 9525121-2
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Plausible rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: GET
+          uri: /example.com
+        output:
+          log:
+            no_expect_ids: [920440]
+  - test_id: 2
     desc: allow .inc TLD
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Plausible rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: GET
-            uri: /example.inc
-          output:
-            no_log_contains: id "920440"
-  - test_title: 9525121-3
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Plausible rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: GET
+          uri: /example.inc
+        output:
+          log:
+            no_expect_ids: [920440]
+  - test_id: 3
     desc: allow .com TLD favicons for referred sites
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Plausible rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: GET
-            uri: /favicon/sources/example.com
-          output:
-            no_log_contains: id "920440"
-  - test_title: 9525121-4
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Plausible rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: GET
+          uri: /favicon/sources/example.com
+        output:
+          log:
+            no_expect_ids: [920440]
+  - test_id: 4
     desc: allow .inc TLD favicons for referred sites
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Plausible rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: GET
-            uri: /favicon/sources/example.inc
-          output:
-            no_log_contains: id "920440"
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Plausible rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: GET
+          uri: /favicon/sources/example.inc
+        output:
+          log:
+            no_expect_ids: [920440]
