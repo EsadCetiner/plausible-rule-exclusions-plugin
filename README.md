@@ -3,9 +3,6 @@
 # Plausible-rule-exclusions-plugin
 This plugin contains rule exclusions for [Plausible](https://plausible.io/) a self hostable, lightweight, and privacy focused analytics server. These rule exclusions are designed to resolve false positives and allow for easier intergration with OWASP CRS.
 
-> [!WARNING]  
-> This plugin is still under development! There may be some bugs or false positives that haven't yet been resolved.
-
 ## Requirements
 - CRS Version 4.0 or newer
 - ModSecurity compatable Web Application Firewall
