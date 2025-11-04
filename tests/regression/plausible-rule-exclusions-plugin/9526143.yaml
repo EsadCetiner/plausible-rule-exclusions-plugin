@@ -1,8 +1,8 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Plausible Rule Exclusions Plugin: Creating a shared link for site analytics"
-test_id: 9525162
+  description: "Plausible Rule Exclusions Plugin: Entering password for shared site"
+test_id: 9526143
 tests:
   - test_id: 1
     stages:
@@ -15,13 +15,11 @@ tests:
             Content-Type: application/x-www-form-urlencoded
           port: 80
           method: POST
-          uri: /sites/example.com/shared-links
+          uri: /share/OCQWL39vVxEkUlamcL_KT/authenticate
           data: |-
-            _csrf_token=random&shared_link%5Bname%5D=test&shared_link%5Bpassword%5D=%3Cscript%3E
+            _csrf_token=random&password=%3Cscript%3E
         output:
           log:
             no_expect_ids:
               - 920273
-              - 921220
               - 941100
-              - 942432

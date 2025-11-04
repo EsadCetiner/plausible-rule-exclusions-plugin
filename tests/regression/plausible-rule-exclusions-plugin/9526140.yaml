@@ -2,7 +2,7 @@
 meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Logging into plausible"
-test_id: 9525140
+test_id: 9526140
 tests:
   - test_id: 1
     desc: Logging into Plausible

@@ -2,7 +2,7 @@
 meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Viewing analytics data"
-test_id: 9525120
+test_id: 9526120
 tests:
   - test_id: 1
     desc: Filtering by OS

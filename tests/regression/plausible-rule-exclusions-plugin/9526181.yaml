@@ -2,7 +2,7 @@
 meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Plugins API"
-test_id: 9525181
+test_id: 9526181
 tests:
   - test_id: 1
     desc: Deleting goals

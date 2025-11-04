@@ -2,7 +2,7 @@
 meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin"
-test_id: 9525121
+test_id: 9526121
 tests:
   - test_id: 1
     desc: allow .com TLD

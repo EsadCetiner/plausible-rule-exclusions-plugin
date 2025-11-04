@@ -1,8 +1,8 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Plausible Rule Exclusions Plugin: Resetting forgotten password"
-test_id: 9525142
+  description: "Plausible Rule Exclusions Plugin: Changing password"
+test_id: 9526161
 tests:
   - test_id: 1
     stages:
@@ -15,9 +15,9 @@ tests:
             Content-Type: application/x-www-form-urlencoded
           port: 80
           method: POST
-          uri: /password/reset?token=some.thing-reset.token-random
+          uri: /settings/security/password
           data: |-
-            _csrf_token=random&user%5Bpassword%5D=%3Cscript%3Eal3RT
+            _csrf_token=something-random&user%5Bold_password%5D=%3Cscript%3E&user%5Bpassword%5D=%3Cscript%3E&user%5Bpassword_confirmation%5D=%3Cscript%3E&user%5Btwo_factor_code%5D=123456
         output:
           log:
             no_expect_ids:
