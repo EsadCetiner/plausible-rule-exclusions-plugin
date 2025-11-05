@@ -1,0 +1,25 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Plausible Rule Exclusions Plugin: Entering password confirmation for 2FA"
+test_id: 9526144
+tests:
+  - test_id: 1
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Plausible rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+          port: 80
+          method: POST
+          uri: /2fa/recovery_codes
+          data: |-
+            _csrf_token=P3QdB1MhVhspJys6CQo1UhY1FDN7HBY9IDRB7hojbbbUVSe4ewqw2kBr&regenerate_2fa_password=%3Cscript%3E
+        output:
+          log:
+            no_expect_ids:
+              - 920273
+              - 941100
