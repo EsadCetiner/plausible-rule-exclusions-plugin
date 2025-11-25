@@ -2,7 +2,7 @@
 meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin: Entering password confirmation for 2FA"
-test_id: 9526144
+test_id: 9527144
 tests:
   - test_id: 1
     stages:

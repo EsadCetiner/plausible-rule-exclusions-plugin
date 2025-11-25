@@ -1,10 +1,11 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Plausible Rule Exclusions Plugin: Entering password for shared site"
-test_id: 9526143
+  description: "Plausible Rule Exclusions Plugin: Plugins API"
+test_id: 9527181
 tests:
   - test_id: 1
+    desc: Deleting goals
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -12,14 +13,11 @@ tests:
             Host: localhost
             User-Agent: Plausible rule exclusions plugin
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/x-www-form-urlencoded
           port: 80
-          method: POST
-          uri: /share/OCQWL39vVxEkUlamcL_KT/authenticate
-          data: |-
-            _csrf_token=random&password=%3Cscript%3E
+          method: DELETE
+          uri: /api/plugins/v1/goals
         output:
           log:
             no_expect_ids:
-              - 920273
-              - 941100
+              - 911100
+              - 921180

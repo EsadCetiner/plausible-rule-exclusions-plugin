@@ -1,11 +1,10 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Plausible Rule Exclusions Plugin: Plugins API"
-test_id: 9526180
+  description: "Plausible Rule Exclusions Plugin: Client sending analytics"
+test_id: 9527200
 tests:
   - test_id: 1
-    desc: Creating/editing custom goals
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -13,20 +12,21 @@ tests:
             Host: localhost
             User-Agent: Plausible rule exclusions plugin
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/json
+            Content-Type: text/plain
           port: 80
-          method: PUT
-          uri: /api/plugins/v1/goals
+          method: POST
+          uri: /api/event
           data: |-
-            {"goals":[{"goal":{"event_name":"404"},"goal_type":"Goal.CustomEvent"},{"goal":{"event_name":"Outbound Link: Click"},"goal_type":"Goal.CustomEvent"}]}
+            {"n":"pageview","u":"https://example.com/","d":"example.com","r":null,"h":1}
         output:
           log:
             no_expect_ids:
-              - 911100
-              - 920273
-              - 921180
+              - 920230
+              - 931130
+              - 942430
+              - 942431
+              - 942432
   - test_id: 2
-    desc: Creatiing/editing custom properties
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -34,20 +34,21 @@ tests:
             Host: localhost
             User-Agent: Plausible rule exclusions plugin
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/json
+            Content-Type: text/plain
           port: 80
-          method: PUT
-          uri: /api/plugins/v1/custom_props
+          method: POST
+          uri: /api/event
           data: |-
-            {"custom_props":[{"custom_prop":{"key":"search_query"}},{"custom_prop":{"key":"result_count"}}]}
+            {"n":"pageview","u":"https://example.com/","d":"example.com","r":"https://duckduckgo.com/","h":1}
         output:
           log:
             no_expect_ids:
-              - 911100
-              - 920273
-              - 921180
+              - 920230
+              - 931130
+              - 942430
+              - 942431
+              - 942432
   - test_id: 3
-    desc: Creating shared links
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -55,15 +56,17 @@ tests:
             Host: localhost
             User-Agent: Plausible rule exclusions plugin
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/json
+            Content-Type: text/plain
           port: 80
-          method: PUT
-          uri: /api/plugins/v1/shared_links
+          method: POST
+          uri: /api/event
           data: |-
-            {"shared_link":{"name":"WordPress - Shared Dashboard","password_protected":false}}
+            {"n":"Outbound Link: Click","u":"https://example.com/","d":"example.com","r":null,"p":{"url":"https://google.com"},"h":1}
         output:
           log:
             no_expect_ids:
-              - 911100
-              - 920273
-              - 921180
+              - 920230
+              - 931130
+              - 942430
+              - 942431
+              - 942432
