@@ -2,7 +2,7 @@
 meta:
   author: "Esad Cetiner"
   description: "Plausible Rule Exclusions Plugin"
-test_id: 9527100
+test_id: 9528100
 tests:
   - test_id: 1
     desc: False positive with cookie
