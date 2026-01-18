@@ -13,7 +13,7 @@ tests:
             Host: localhost
             User-Agent: Plausible rule exclusions plugin
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Cookie: _plausible_key=some.thing--random-cookie; _plausible_prod=some.thing--random-cookie
+            Cookie: _plausible_key=some.thing--random-cookie; _plausible_prod=some.thing--random-cookie; session_2fa=--some_.randomstring-
           port: 80
           method: GET
           uri: /get
@@ -21,6 +21,8 @@ tests:
           log:
             no_expect_ids:
               - 942340
+              - 942421
+              - 942432
               - 942440
               - 942450
   - test_id: 2
@@ -39,5 +41,7 @@ tests:
           log:
             no_expect_ids:
               - 942340
+              - 942421
+              - 942432
               - 942440
               - 942450
