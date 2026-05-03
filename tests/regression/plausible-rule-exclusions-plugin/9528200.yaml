@@ -23,6 +23,7 @@ tests:
             no_expect_ids:
               - 920230
               - 931130
+              - 932200
               - 942430
               - 942431
               - 942432
@@ -45,6 +46,7 @@ tests:
             no_expect_ids:
               - 920230
               - 931130
+              - 932200
               - 942430
               - 942431
               - 942432
@@ -67,6 +69,30 @@ tests:
             no_expect_ids:
               - 920230
               - 931130
+              - 932200
+              - 942430
+              - 942431
+              - 942432
+  - test_id: 4
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Plausible rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: text/plain
+          port: 80
+          method: POST
+          uri: /api/event
+          data: |-
+            {"n":"Outbound Link: Click","v":33,"u":"https://example.com/category/blog-post/","d":"example.com","r":null,"p":{"url":"https://twitter.com/intent/tweet/?url=https://example.com/category/blog-post/&text=Example%20Blog"}}
+        output:
+          log:
+            no_expect_ids:
+              - 920230
+              - 931130
+              - 932200
               - 942430
               - 942431
               - 942432
