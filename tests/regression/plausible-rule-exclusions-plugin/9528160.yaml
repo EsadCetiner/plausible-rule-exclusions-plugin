@@ -23,7 +23,9 @@ tests:
           log:
             no_expect_ids:
               - 920273
+              - 920650
               - 932250
+              - 932350
               - 932236
   - test_id: 2
     desc: Enabling/disabling Custom Properties in Dashboard
@@ -44,5 +46,7 @@ tests:
           log:
             no_expect_ids:
               - 920273
+              - 920650
               - 932250
+              - 932350
               - 932236
