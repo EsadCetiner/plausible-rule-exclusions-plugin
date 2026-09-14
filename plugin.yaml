@@ -1,0 +1,37 @@
+# OWASP CRS Plugin Descriptor
+# https://github.com/coreruleset/plugin-registry
+
+schema_version: 1
+
+plugin:
+  name: "plausible-rule-exclusions-plugin"
+  description: "OWASP CRS rule exclusions for Plausible Analytics"
+  long_description: Provides rule-exclusions for common false positives with Plausible Analytics.
+  type: "3rd-party"
+  category: "rule-exclusion"
+  status: "tested"
+  license: "GPL-2.0"
+  authors:
+    - name: "Esad Cetiner"
+      url: "https://github.com/EsadCetiner"
+  repository: "https://github.com/EsadCetiner/plausible-rule-exclusions-plugin"
+  keywords:
+    - "plausible-analytics"
+    - "analytics"
+    - "rule-exclusion"
+    - "false-positive"
+
+rule_id_range:
+  start: 9528000
+  end: 9528999
+
+compatibility:
+  crs_version: ">=4.0.0"
+
+configuration:
+  file: "plugins/plausible-rule-exclusions-config.conf"
+  variables:
+    - name: "tx.plausible-rule-exclusions-plugin"
+      type: "boolean"
+      default: 1
+      description: "Enables the plugin's rule exclusions; set to 0 to disable them and re-enable the excluded CRS rules"
